@@ -18,4 +18,5 @@ int main(int argc, char **argv) {
     printf("Jack Fruhling!\n");
     printf("Computer Science\n");
 
+    return 0;
 }

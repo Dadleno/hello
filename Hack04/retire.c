@@ -7,9 +7,52 @@
  * This program produces an amortization table for a 401(k) account
 */
 
-int main(int argc, char** argv[]) {
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+int main(int argc, char **argv) {
+
+    if (argc != 6) {
+        printf("ERROR: invalid amount of command line arguments");
+    }
+
+    double balance = atof(argv[1]);
+    int monthlyCont = atof(argv[2]);
+    double annualReturn = atof(argv[3]);
+    double annualInflation = atof(argv[4]);
+    int retireYears = atof(argv[5]);
+    double annualInterest;
+    double monthlyRate;
+    double interestAmt;
+    int month = retireYears * 12;
+    
+
+    if (annualReturn < 0 || annualReturn > 1) {
+        printf("ERROR: invalid rate of return");
+        exit(1);
+    } else if (annualInflation < 0 || annualInflation > 1) {
+        printf("ERROR: invalid rate of inflation");
+        exit(1);
+    } 
+
+    printf("Month   Interest      Balance\n");
 
 
+    double totalInterest = 0;
+    for (int i = 1; i <= month; i++) {
+        annualInterest = ((1.0 + annualReturn)/(1.0 + annualInflation)) - 1.0;
+        monthlyRate = annualInterest/12.0;
+        interestAmt = balance * monthlyRate;
+        interestAmt = round(interestAmt * 100)/100;
+        balance += (monthlyCont + interestAmt);
+        totalInterest += interestAmt;
+
+        printf("%5d $%10.2f $%10.2f\n", i, interestAmt, balance);
+    }
+
+    printf("Total Interest Earned: $%10.2f\n", totalInterest);
+    printf("Total Nest Egg: $%10.2f\n", balance);
 
     return 0;
 }

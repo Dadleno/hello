@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
         printf("ERROR: invalid amount of command line arguments");
     }
 
-    double balance = atof(argv[1]);
-    int monthlyCont = atof(argv[2]);
+    double balance = round(atof(argv[1]) * 100) / 100;
+    double monthlyCont = round(atof(argv[2]) * 100) / 100;
     double annualReturn = atof(argv[3]);
     double annualInflation = atof(argv[4]);
     int retireYears = atof(argv[5]);
@@ -26,6 +26,13 @@ int main(int argc, char **argv) {
     double monthlyRate;
     double interestAmt;
     int month = retireYears * 12;
+
+    double annualCont = monthlyCont * 12;
+    if (annualCont > 18500) {
+        printf("ERROR: monthly contributions exceed $18,500 annual limit");
+    }
+
+
     
 
     if (annualReturn < 0 || annualReturn > 1) {

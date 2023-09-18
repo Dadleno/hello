@@ -35,6 +35,7 @@ int main(int argc, char **argv) {
     double annualCont = monthlyCont * 12;
     if (annualCont > 18500) {
         printf("ERROR: monthly contributions exceed $18,500 annual limit");
+        exit(1);
     }
 
 

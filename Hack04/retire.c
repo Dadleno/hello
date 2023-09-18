@@ -11,14 +11,19 @@
 #include<stdlib.h>
 #include<math.h>
 
+/**
+ * Computes the annual interest required to produce the table
+*/
+double roundToCents(double x);
+
 int main(int argc, char **argv) {
 
     if (argc != 6) {
         printf("ERROR: invalid amount of command line arguments");
     }
 
-    double balance = round(atof(argv[1]) * 100) / 100;
-    double monthlyCont = round(atof(argv[2]) * 100) / 100;
+    double balance = roundToCents(atof(argv[1]));
+    double monthlyCont = roundToCents(atof(argv[2]));
     double annualReturn = atof(argv[3]);
     double annualInflation = atof(argv[4]);
     int retireYears = atof(argv[5]);
@@ -51,7 +56,7 @@ int main(int argc, char **argv) {
         annualInterest = ((1.0 + annualReturn)/(1.0 + annualInflation)) - 1.0;
         monthlyRate = annualInterest/12.0;
         interestAmt = balance * monthlyRate;
-        interestAmt = round(interestAmt * 100)/100;
+        interestAmt = roundToCents(interestAmt);
         balance += (monthlyCont + interestAmt);
         totalInterest += interestAmt;
 
@@ -62,4 +67,10 @@ int main(int argc, char **argv) {
     printf("Total Nest Egg: $%10.2f\n", balance);
 
     return 0;
+}
+
+double roundToCents(double x) {
+    double result = round(x * 100) / 100;
+
+    return result;
 }

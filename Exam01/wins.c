@@ -44,6 +44,7 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+//rounds to two decimal places
 double roundToHund(double x) {
     double result;
     result = round(x * 100) / 100;
@@ -51,6 +52,7 @@ double roundToHund(double x) {
     return result;
 } 
 
+//raises x to the power of 2.37 and returns that value
 double raisePower(double x) {
     double result;
     result = pow(x, EXP1);

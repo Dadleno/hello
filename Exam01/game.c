@@ -1,6 +1,10 @@
 /**
- * Exam 1 starter code
+ * Author: Dade Lenox
+ * Date: 2023-09-22
  *
+ * A game that is played between two players. A number is chosen. When the number is even Player 1 scores 
+ * and the value is divided by two. When the number is odd, Player 2 scores and the value is multiplied
+ * by 3 and incremented by 1.
  */
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,7 +25,6 @@ int main(int argc, char **argv) {
 
     printf("Starting Value: %d\n", value);
 
-    //each round the results should be printed:
     while (value != 1) {
         printf("Round %2d: %3d... ", round, value);
 

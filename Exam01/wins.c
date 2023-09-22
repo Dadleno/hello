@@ -23,9 +23,9 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
-    double winPercent;
     double pointsFor = roundToHund(atof(argv[1]));
     double pointsAgainst = roundToHund(atof(argv[2]));
+    double winPercent;
     double wins;
     double loses;
 

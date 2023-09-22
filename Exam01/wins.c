@@ -29,6 +29,10 @@ int main(int argc, char **argv) {
     double wins;
     double loses;
 
+    if (pointsAgainst < 0 || pointsFor) {
+        printf("ERROR: invalid input(s); cannot be negative");
+    }
+
     winPercent = (raisePower(pointsFor)) / (raisePower(pointsFor) + raisePower(pointsAgainst));
 
     wins = round(winPercent * GAMES);

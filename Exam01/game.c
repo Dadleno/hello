@@ -23,6 +23,10 @@ int main(int argc, char **argv) {
     int totalScoreA;
     int totalScoreB;
 
+    if (value < 0) {
+        printf("ERROR: input must be positive");
+        exit(1);
+    }
 
     printf("Starting Value: %d\n", value);
 

@@ -4,6 +4,8 @@
 
 #include "utils.h"
 
+#define RADIUS 6371
+
 double degreesToRadians(double degrees) {
 
     double result = (degrees * M_PI) / 180;
@@ -13,15 +15,15 @@ double degreesToRadians(double degrees) {
 
 double getAirDistance(double originLatitude, double originLongitude, double destinationLatitude, double destinationLongitude) {
 
-    double delta = destinationLongitude - originLongitude;
+    double delta;
 
-    delta = degreesToRadians(delta);
     originLatitude = degreesToRadians(originLatitude);
     originLongitude = degreesToRadians(originLongitude);
     destinationLatitude = degreesToRadians(destinationLatitude);
     destinationLongitude = degreesToRadians(destinationLongitude);
+    delta = destinationLongitude - originLongitude;
 
-    double result = acos((sin(originLatitude) * sin(destinationLatitude)) + (cos(originLatitude) * cos(destinationLatitude) * cos(delta))) * delta;
+    double result = acos((sin(originLatitude) * sin(destinationLatitude)) + (cos(originLatitude) * cos(destinationLatitude) * cos(delta))) * RADIUS;
 
     return result;
 }

@@ -27,3 +27,9 @@ double getAirDistance(double originLatitude, double originLongitude, double dest
 
     return result;
 }
+
+double lorentzTimeDilation(double t, double percentC) {
+    double result = t / (sqrt(1 - (percentC * percentC)));
+
+    return result;
+}
